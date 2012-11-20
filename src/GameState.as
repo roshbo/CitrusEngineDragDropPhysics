@@ -25,7 +25,9 @@ package
 			add(new Platform("left", {x:0, y:stage.stageHeight / 2, width:2, height: stage.stageHeight}));
 			add(new Platform("right", {x:stage.stageWidth - 20, y:stage.stageHeight / 2, width:2, height: stage.stageHeight}));
 			
-			add(new Block("block", {x:stage.stageWidth / 2, y:stage.stageHeight / 2, blockType: "quad"}));
+			add(new Block("block", {x:stage.stageWidth / 2, y:stage.stageHeight / 2, blockType: "quad", width: 82, height: 82}));
+			add(new Block("character1", {x:(stage.stageWidth / 2) - 80, y:stage.stageHeight / 2, blockType: "character1", width: 60, height: 73}));
+			add(new Block("character2", {x:(stage.stageWidth / 2) + 80, y:stage.stageHeight / 2, blockType: "character2", width: 60, height: 80}));
 		}
 	}
 }

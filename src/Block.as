@@ -36,7 +36,15 @@ package
 			if (blockType == "quad")
 			{
 				_view = new AnimationSequence(Assets.getAtlas("Block01", "Block01Xml"), ["normal"], "normal");
-			}	
+			}
+			else if (blockType == "character1")
+			{
+				_view = new AnimationSequence(Assets.getAtlas("Characters", "CharactersXml"), ["character1"], "character1");
+			}
+			else if (blockType == "character2")
+			{
+				_view = new AnimationSequence(Assets.getAtlas("Characters", "CharactersXml"), ["character2"], "character2");
+			}
 			
 			(_view as AnimationSequence).addEventListener(TouchEvent.TOUCH, handleTouch);
 		}
@@ -157,6 +165,6 @@ package
 			trace("Blocks::handleRelease");
 			disableHolding();
 		}
-
+		
 	}
 }

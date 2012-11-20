@@ -5,7 +5,7 @@ package
 	
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
-
+	
 	public class Assets
 	{
 		
@@ -15,11 +15,17 @@ package
 		[Embed(source="../media/graphics/block01.png")]
 		public static const Block01:Class;
 		
+		[Embed(source="../media/graphics/characters.png")]
+		public static const Characters:Class;
+		
 		[Embed(source="../media/xml/backgroundGame.xml", mimeType="application/octet-stream")]
 		public static const BackgroundXml:Class;
 		
 		[Embed(source="../media/xml/block01.xml", mimeType="application/octet-stream")]
 		public static const Block01Xml:Class;
+		
+		[Embed(source="../media/xml/characters.xml", mimeType="application/octet-stream")]
+		public static const CharactersXml:Class;
 		
 		private static var textureList:Dictionary = new Dictionary();
 		private static var textureAtlasList:Dictionary = new Dictionary();
@@ -44,6 +50,6 @@ package
 			}
 			return textureAtlasList[nameAtlas];
 		}
-			
+		
 	}
 }
