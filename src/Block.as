@@ -21,6 +21,7 @@ package
 		private var _jointDef:b2MouseJointDef;
 		private var _joint:b2MouseJoint;
 		private var _mouseScope:DisplayObject;
+		private var _touchToApplyForce:Boolean = false;
 		
 		private var _draggableArt:AnimationSequence;
 		
@@ -37,13 +38,9 @@ package
 			{
 				_view = new AnimationSequence(Assets.getAtlas("Block01", "Block01Xml"), ["normal"], "normal");
 			}
-			else if (blockType == "character1")
+			else
 			{
-				_view = new AnimationSequence(Assets.getAtlas("Characters", "CharactersXml"), ["character1"], "character1");
-			}
-			else if (blockType == "character2")
-			{
-				_view = new AnimationSequence(Assets.getAtlas("Characters", "CharactersXml"), ["character2"], "character2");
+				_view = new AnimationSequence(Assets.getAtlas("Characters", "CharactersXml"), [blockType], blockType);
 			}
 			
 			(_view as AnimationSequence).addEventListener(TouchEvent.TOUCH, handleTouch);
@@ -138,6 +135,12 @@ package
 				trace("Blocks::handleTouch - touch began");
 				enableHolding(t.target); // doesnt works
 				//enableHolding(_view); //doesnt works
+				
+				if (_touchToApplyForce)
+				{
+					var x:int = Util.randomInt(-100, 100);
+					_body.ApplyImpulse(new b2Vec2(x, 150), new b2Vec2(0, 0));
+				}
 			}
 			else if (t !== null && t.phase == TouchPhase.ENDED)
 			{

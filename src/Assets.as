@@ -5,7 +5,7 @@ package
 	
 	import starling.textures.Texture;
 	import starling.textures.TextureAtlas;
-	
+
 	public class Assets
 	{
 		
@@ -19,7 +19,7 @@ package
 		public static const Characters:Class;
 		
 		[Embed(source="../media/xml/backgroundGame.xml", mimeType="application/octet-stream")]
-		public static const BackgroundXml:Class;
+		public static const BackgroundGameXml:Class;
 		
 		[Embed(source="../media/xml/block01.xml", mimeType="application/octet-stream")]
 		public static const Block01Xml:Class;
@@ -50,6 +50,6 @@ package
 			}
 			return textureAtlasList[nameAtlas];
 		}
-		
+			
 	}
 }
