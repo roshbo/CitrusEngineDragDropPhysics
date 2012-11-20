@@ -3,13 +3,13 @@ package
 	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingArt;
 	
 	import Box2D.Common.Math.b2Vec2;
 	import Box2D.Dynamics.Joints.b2MouseJoint;
 	import Box2D.Dynamics.Joints.b2MouseJointDef;
 	
 	import starling.display.DisplayObject;
+	import starling.events.Touch;
 	import starling.events.TouchEvent;
 	import starling.events.TouchPhase;
 	
@@ -29,12 +29,6 @@ package
 			super(name, params);
 		}
 		
-		override protected function defineBody():void
-		{
-			super.defineBody();
-			_bodyDef.bullet = true;	
-		}
-		
 		override public function initialize(poolObjectParams:Object = null):void
 		{
 			super.initialize(poolObjectParams);
@@ -50,17 +44,11 @@ package
 				//_draggableArt = AnimationSequence((view.getArt(this) as StarlingArt).content);
 				
 				// add event listenners
-				_draggableArt .addEventListener(TouchPhase.BEGAN, handleGrab);               
-				_draggableArt .addEventListener(TouchPhase.ENDED, handleRelease);
+				_draggableArt.addEventListener(TouchPhase.BEGAN, handleGrab);               
+				_draggableArt.addEventListener(TouchPhase.ENDED, handleRelease);
+				(_view as AnimationSequence).addEventListener(TouchEvent.TOUCH, handleTouch);
 				
 			}	
-		}
-		
-		override protected function defineFixture():void
-		{
-			super.defineFixture();
-			_fixtureDef.density = 0.1;
-			_fixtureDef.restitution = 0;
 		}
 		
 		override public function destroy():void
@@ -106,6 +94,16 @@ package
 			_joint = null;
 		}
 		
+		public function get blockType():String
+		{
+			return _blockType;
+		}
+		
+		public function set blockType(value:String):void
+		{
+			_blockType = value;
+		}
+		
 		override protected function defineJoint():void 
 		{	
 			super.defineJoint();
@@ -116,6 +114,38 @@ package
 			_jointDef.dampingRatio = .2;
 			_jointDef.frequencyHz = 100;
 			_jointDef.maxForce = 100;
+		}
+		
+		override protected function defineBody():void
+		{
+			super.defineBody();
+			_bodyDef.bullet = true;	
+		}
+		
+		override protected function defineFixture():void
+		{
+			super.defineFixture();
+			_fixtureDef.density = 0.1;
+			_fixtureDef.restitution = 0;
+		}
+		
+		private function handleTouch(e:TouchEvent):void
+		{
+			trace("Blocks::handleTouch");
+			
+			var t:Touch = e.getTouch(_view as DisplayObject);
+			
+			if (t !== null && t.phase == TouchPhase.BEGAN)
+			{
+				trace("Blocks::handleTouch - touch began");
+				enableHolding(t.target); // doesnt works
+				//enableHolding(_view); //doesnt works
+			}
+			else if (t !== null && t.phase == TouchPhase.ENDED)
+			{
+				trace("Blocks::handleTouch - touch end");
+				disableHolding();
+			}
 		}
 		
 		private function handleGrab(e:TouchEvent):void
@@ -138,16 +168,5 @@ package
 			disableHolding();
 		}
 
-		public function get blockType():String
-		{
-			return _blockType;
-		}
-
-		public function set blockType(value:String):void
-		{
-			_blockType = value;
-		}
-
-		
 	}
 }
