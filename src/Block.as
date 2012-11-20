@@ -36,19 +36,9 @@ package
 			if (blockType == "quad")
 			{
 				_view = new AnimationSequence(Assets.getAtlas("Block01", "Block01Xml"), ["normal"], "normal");
-				
-				// method 1 - doesnt work
-				_draggableArt = _view;
-				
-				// method 2 - doesnt work
-				//_draggableArt = AnimationSequence((view.getArt(this) as StarlingArt).content);
-				
-				// add event listenners
-				_draggableArt.addEventListener(TouchPhase.BEGAN, handleGrab);               
-				_draggableArt.addEventListener(TouchPhase.ENDED, handleRelease);
-				(_view as AnimationSequence).addEventListener(TouchEvent.TOUCH, handleTouch);
-				
 			}	
+			
+			(_view as AnimationSequence).addEventListener(TouchEvent.TOUCH, handleTouch);
 		}
 		
 		override public function destroy():void
