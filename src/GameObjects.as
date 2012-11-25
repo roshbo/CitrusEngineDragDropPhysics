@@ -3,7 +3,7 @@ package
 	public class GameObjects
 	{
 		
-		public static var debug:Boolean = true;
+		public static var debug:Boolean = false;
 		
 	}
 }

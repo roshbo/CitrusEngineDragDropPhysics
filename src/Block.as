@@ -1,5 +1,6 @@
 package
 {
+	import com.citrusengine.core.CitrusEngine;
 	import com.citrusengine.core.CitrusObject;
 	import com.citrusengine.objects.Box2DPhysicsObject;
 	import com.citrusengine.view.starlingview.AnimationSequence;
@@ -62,7 +63,7 @@ package
 			
 			if (_joint) 
 			{
-				_joint.SetTarget(new b2Vec2(_mouseScope.x / _box2D.scale, _mouseScope.y / _box2D.scale));
+				_joint.SetTarget(new b2Vec2(CitrusEngine.getInstance().stage.mouseX / _box2D.scale, CitrusEngine.getInstance().stage.mouseY / _box2D.scale));
 			}
 		}
 		
@@ -73,8 +74,10 @@ package
 				return;
 			}
 			
+			trace("Block::Enable holding");
+			
 			_mouseScope = mouseScope;
-			_jointDef.target = new b2Vec2(_mouseScope.x / _box2D.scale, _mouseScope.y / _box2D.scale);
+			_jointDef.target = new b2Vec2(CitrusEngine.getInstance().stage.mouseX / _box2D.scale, CitrusEngine.getInstance().stage.mouseY / _box2D.scale);
 			_joint = _box2D.world.CreateJoint(_jointDef) as b2MouseJoint;
 		}
 		

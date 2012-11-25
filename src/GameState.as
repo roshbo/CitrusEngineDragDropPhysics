@@ -5,10 +5,6 @@ package
 	import com.citrusengine.objects.platformer.box2d.Platform;
 	import com.citrusengine.physics.box2d.Box2D;
 	import com.citrusengine.view.starlingview.AnimationSequence;
-	import com.citrusengine.view.starlingview.StarlingTileSystem;
-	
-	import starling.display.BlendMode;
-	import starling.display.MovieClip;
 
 	public class GameState extends StarlingState
 	{
@@ -43,8 +39,7 @@ package
 			add(new Block("character4", {x:(stage.stageWidth / 2) - 80, y:stage.stageHeight / 2, blockType: "character4", width: 60, height: 76}));
 			add(new Block("character5", {x:(stage.stageWidth / 2) + 80, y:stage.stageHeight / 2, blockType: "character5", width: 60, height: 121}));
 			add(new Block("character6", {x:(stage.stageWidth / 2), y:stage.stageHeight / 2, blockType: "character6", width: 60, height: 74}));
-			add(new Block("character7", {x:(stage.stageWidth / 2) - 80, y:stage.stageHeight / 2, blockType: "character7", width: 60, height: 77}));
-			
+			add(new Block("character7", {x:(stage.stageWidth / 2) - 80, y:stage.stageHeight / 2, blockType: "character7", width: 60, height: 77}));			
 		}
 	}
 }

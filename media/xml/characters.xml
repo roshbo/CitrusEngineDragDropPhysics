@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TextureAtlas imagePath="characters.png">
+    <SubTexture name="character1" x="0" y="0" width="60" height="73" frameX="0" frameY="0" frameWidth="60" frameHeight="73"/>    
+    <SubTexture name="character2" x="60" y="0" width="60" height="80" frameX="0" frameY="0" frameWidth="60" frameHeight="80"/>
+    <SubTexture name="character3" x="120" y="0" width="60" height="93" frameX="0" frameY="0" frameWidth="60" frameHeight="93"/>
+    <SubTexture name="character4" x="180" y="0" width="60" height="76" frameX="0" frameY="0" frameWidth="60" frameHeight="76"/>
+    <SubTexture name="character5" x="240" y="0" width="60" height="121" frameX="0" frameY="0" frameWidth="60" frameHeight="121"/>
+    <SubTexture name="character6" x="300" y="0" width="60" height="74" frameX="0" frameY="0" frameWidth="60" frameHeight="74"/>
+    <SubTexture name="character7" x="360" y="0" width="60" height="77" frameX="0" frameY="0" frameWidth="60" frameHeight="77"/>
+</TextureAtlas>
